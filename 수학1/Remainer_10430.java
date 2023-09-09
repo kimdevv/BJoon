@@ -1,6 +1,8 @@
+package BJoon.수학1;
+
 import java.io.*;
 
-public class Main {
+public class Remainer_10430 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
