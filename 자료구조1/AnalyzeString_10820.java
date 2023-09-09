@@ -2,7 +2,7 @@ package BJoon.자료구조1;
 
 import java.io.*;
 
-public class AnalyzeString_10820 {
+public class AnalyzeString_10820 { 
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
