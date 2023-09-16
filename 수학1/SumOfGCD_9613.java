@@ -3,7 +3,7 @@ package BJoon.수학1;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class SumOfGCD {
+public class SumOfGCD_ {
 	static long sum;
 	
 	public static int stoi(String str) {
