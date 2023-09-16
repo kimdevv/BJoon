@@ -2,7 +2,7 @@ package BJoon.수학1;
 
 import java.io.*;
 
-public class OctaltoBinary {
+public class OctaltoBinary_ {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
