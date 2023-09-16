@@ -3,7 +3,7 @@ package BJoon.수학1;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Hiding {
+public class Hiding_17087 {
 	
 	public static int stoi(String str) {
 		return Integer.parseInt(str);
