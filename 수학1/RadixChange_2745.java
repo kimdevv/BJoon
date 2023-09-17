@@ -12,7 +12,6 @@ public class RadixChange_2745 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
 		
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		String N = st.nextToken();
