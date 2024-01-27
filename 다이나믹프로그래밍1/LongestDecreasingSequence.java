@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class LongesDecreasingSequence {
+public class LongestDecreasingSequence {
 
     public static int stoi(String str) {
         return Integer.parseInt(str);
