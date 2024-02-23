@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Main {
+public class Coin0 {
 
     public static int stoi(String str) {
         return Integer.parseInt(str);
