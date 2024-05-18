@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/자료구조1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/그리디알고리즘" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/브루트포스" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
