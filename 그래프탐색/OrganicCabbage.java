@@ -13,6 +13,8 @@ public class OrganicCabbage {
     static int[][] array; // 밭
     static boolean[][] isVisited;
     static Queue<Point> queue;
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, -1, 0, 1};
 
     public static int stoi(String string) {
         return Integer.parseInt(string);
@@ -58,6 +60,27 @@ public class OrganicCabbage {
 
         while (!queue.isEmpty()) {
             Point vertex = queue.poll();
+
+            for (int i=0; i<4; i++) {
+                int cx = vertex.x + dx[i];
+                int cy = vertex.y + dy[i];
+
+                if ((0 <= cx && cx < M) && (0 <= cy && cy < N)) {
+                    if (array[cx][cy] == 1 && !isVisited[cx][cy]) {
+                        isVisited[cx][cy] = true;
+                        queue.add(new Point(cx, cy));
+                    }
+                }
+            }
+        }
+    }
+
+    /*public static void bfs(int j, int k) {
+        isVisited[j][k] = true;
+        queue.add(new Point(j, k));
+
+        while (!queue.isEmpty()) {
+            Point vertex = queue.poll();
             int x = vertex.x;
             int y = vertex.y;
             if ((x-1) >=0 && array[x-1][y] == 1 && !isVisited[x-1][y]) {
@@ -77,5 +100,5 @@ public class OrganicCabbage {
                 queue.add(new Point(x, y+1));
             }
         }
-    }
+    }*/
 }
