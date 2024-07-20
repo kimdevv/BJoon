@@ -8,10 +8,9 @@ public class MazeQuest {
     static int N;
     static int M;
     static int[][] array;
-    static boolean[][] isVisited;
-    static int[] dx = {-1, 0, 1, 0};
-    static int[] dy = {0, -1, 0, 1};
-    static int count = 0;
+    static int[] dx = {1, 0, -1, 0};
+    static int[] dy = {0, 1, 0, -1};
+    static int result = Integer.MAX_VALUE;
 
     public static int stoi(String str) {
         return Integer.parseInt(str);
@@ -25,7 +24,6 @@ public class MazeQuest {
         M = stoi(st.nextToken()); // x의 최댓값
 
         array = new int[N][M];
-        isVisited = new boolean[N][M];
 
         for (int i=0; i<N; i++) {
             String line = br.readLine();
@@ -33,37 +31,33 @@ public class MazeQuest {
                 array[i][j] = line.charAt(j) - '0'; // 0 또는 1
             }
         }
-
-        for (int i=0; i<N; i++) {
-            for (int j=0; j<M; j++) {
-                if (array[i][j]==1 && !isVisited[i][j]) {
-                    Point point = new Point(j, i); // j가 x고 i가 y임
-                    dfs(point);
-                }
-            }
-        }
+        System.out.println(array.toString());
+        Point point = new Point(0, 0);
+        dfs(point, 1, new boolean[N][M]);
+        System.out.println(result);
     }
 
-    public static void dfs(Point point) {
+    public static void dfs(Point point, int count, boolean[][] isVisited) {
+        System.out.println("[" + point.y + "] [" + point.x + "] " + count);
         if (point.x==M-1 && point.y==N-1) {
-            System.out.println(count);
-        }
+            if (count < result) {
+                result = count;
+            }
+        } else {
+            boolean[][] nextVisited = isVisited.clone();
+            nextVisited[point.y][point.x] = true;
 
-        isVisited[point.y][point.x] = true;
+            for (int i=0; i<4; i++) {
+                int cx = point.x + dx[i];
+                int cy = point.y + dy[i];
 
-        int tmpCount = 0;
-        for (int i=0; i<4; i++) {
-            int cx = point.x + dx[i];
-            int cy = point.y + dy[i];
-
-            //System.out.println(cx + " " + cy);
-            if ((0<=cx && cx<M) && (0<=cy && cy<N)){
-                if (array[cy][cx]==1 && !isVisited[cy][cx]) {
-                    tmpCount++;
-                    dfs(new Point(cx, cy));
+                if ((0<=cx && cx<M) && (0<=cy && cy<N)){
+                    if (array[cy][cx]==1 && !isVisited[cy][cx]) {
+                        System.out.println(point.y + " " + point.x);
+                        dfs(new Point(cx, cy), count+1, nextVisited);
+                    }
                 }
             }
         }
-        count += tmpCount;
     }
 }
