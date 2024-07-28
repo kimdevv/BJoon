@@ -2,15 +2,27 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class MazeQuest {
     static int N;
     static int M;
     static int[][] array;
+    static boolean[][] isVisited;
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
-    static int result = Integer.MAX_VALUE;
+
+    public static class Node {
+        int x;
+        int y;
+
+        Node(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 
     public static int stoi(String str) {
         return Integer.parseInt(str);
@@ -22,39 +34,42 @@ public class MazeQuest {
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = stoi(st.nextToken()); // y의 최댓값
         M = stoi(st.nextToken()); // x의 최댓값
+        array = new int[N+1][M+1];
+        isVisited = new boolean[N+1][M+1];
 
-        array = new int[N][M];
-
-        for (int i=0; i<N; i++) {
+        // 배열 초기화
+        for (int i=1; i<=N; i++) {
             String line = br.readLine();
-            for (int j=0; j<M; j++) {
-                array[i][j] = line.charAt(j) - '0'; // 0 또는 1
+            for (int j=1; j<=M; j++) {
+                array[i][j] = line.charAt(j-1) - '0';
             }
         }
-        System.out.println(array.toString());
-        Point point = new Point(0, 0);
-        dfs(point, 1, new boolean[N][M]);
-        System.out.println(result);
+
+        // (1, 1)부터 방문 후 bfs로 탐색
+        isVisited[1][1] = true;
+        bfs(new Node(1, 1));
+
+        System.out.println(array[N][M]);
     }
 
-    public static void dfs(Point point, int count, boolean[][] isVisited) {
-        System.out.println("[" + point.y + "] [" + point.x + "] " + count);
-        if (point.x==M-1 && point.y==N-1) {
-            if (count < result) {
-                result = count;
-            }
-        } else {
-            boolean[][] nextVisited = isVisited.clone();
-            nextVisited[point.y][point.x] = true;
+    public static void bfs(Node start) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(start);
+
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            int x = node.x;
+            int y = node.y;
 
             for (int i=0; i<4; i++) {
-                int cx = point.x + dx[i];
-                int cy = point.y + dy[i];
+                int cx = x + dx[i];
+                int cy = y + dy[i];
 
-                if ((0<=cx && cx<M) && (0<=cy && cy<N)){
-                    if (array[cy][cx]==1 && !isVisited[cy][cx]) {
-                        System.out.println(point.y + " " + point.x);
-                        dfs(new Point(cx, cy), count+1, nextVisited);
+                if ((1<=cx&&cx<=M) && (1<=cy&&cy<=N)) {
+                    if (array[cy][cx] != 0 && !isVisited[cy][cx]) {
+                        isVisited[cy][cx] = true;
+                        array[cy][cx] = array[y][x]+1;
+                        queue.add(new Node(cx, cy));
                     }
                 }
             }
