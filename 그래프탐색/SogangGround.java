@@ -34,7 +34,7 @@ public class SogangGround {
         int r = stoi(st.nextToken()); // 길의 개수
 
         st = new StringTokenizer(br.readLine());
-        int[] itemCount = new int[n+1]; // 0 1 2 3 4 5
+        int[] itemCount = new int[n+1]; // 각 아이템의 개수 배열
         for (int i=1; i<itemCount.length; i++) {
             itemCount[i] = stoi(st.nextToken());
         }
@@ -49,6 +49,7 @@ public class SogangGround {
             int vertex2 = stoi(st.nextToken());
             int distance = stoi(st.nextToken());
 
+            // 하나의 간선으로 두 노드 모두 갈 수 있다
             routeList[vertex1].add(new Route(vertex2, itemCount[vertex2], distance));
             routeList[vertex2].add(new Route(vertex1, itemCount[vertex1], distance));
         }
@@ -56,9 +57,11 @@ public class SogangGround {
         int max = 0;
         PriorityQueue<Route> pq = new PriorityQueue<>();
         for (int k=1; k<=n; k++) {
-//System.out.println(k);
+            // 누적 아이템 수
             int[] saveItem = new int[n+1];
             saveItem[k] = itemCount[k];
+
+            // 누적 거리 수
             int[] saveDistance = new int[n+1];
             Arrays.fill(saveDistance, 100_000);
             saveDistance[k] = 0;
@@ -79,8 +82,10 @@ public class SogangGround {
 
                 saveItem[nowLocation] = nowItem;
                 if (isVisited[nowLocation]) {
+                    // 방문했던 지역이라면
                     nowSaveItem -= saveItem[nowLocation];
                 } else {
+                    // 방문하지 않았던 지역이라면
                     isVisited[nowLocation] = true;
                 }
                 nowSaveItem += saveItem[nowLocation];
@@ -90,14 +95,16 @@ public class SogangGround {
                 if (max <= nowSaveItem) {
                     max = nowSaveItem;
                 }
-//System.out.println(nowLocation + " " + nowSaveItem + " " + max);
+
                 for (int i=0; i<routeList[nowLocation].size(); i++) {
                     Route nextRoute = routeList[nowLocation].get(i);
                     int nextLocation = nextRoute.end;
                     int nextItem = nextRoute.item;
                     int nextDistance = nextRoute.distance;
-//System.out.println(nowLocation + " " + nextLocation + " 위치체크");
+
+                    // 아이템이 더 많아지는 경우
                     if (saveItem[nextLocation] < nowItem + nextItem) {
+                        // PQ에 담는다.
                         pq.add(new Route(nextLocation, nextItem, nowDistance+nextDistance));
                     }
                 }
