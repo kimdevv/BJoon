@@ -73,14 +73,14 @@ public class PotNumbering {
         }
         result.add(count);
     }
-}
+    public static class twoNumber {
+        int y;
+        int x;
 
-class twoNumber {
-    int y;
-    int x;
-
-    twoNumber(int y, int x) {
-        this.y = y;
-        this.x = x;
+        twoNumber(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
     }
 }
+
