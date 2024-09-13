@@ -1,2 +1,2 @@
-백준을 해결하고 난 코드 기록.
-구글링에서 얻은 코드는 작성하지 않고, 제가 직접 작성한 코드만 커밋합니다.
+# 내가해냄
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=kimdev0926)](https://solved.ac/kimdev0926/)
