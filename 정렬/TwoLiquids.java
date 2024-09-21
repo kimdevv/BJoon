@@ -18,7 +18,7 @@ public class TwoLiquids {
         }
         Arrays.sort(array); // 오름차 순으로 정렬 (-99, -2, -1, 4, 98)
 
-        // 양끝에서 가운데로 이동하는 투포인터
+        // 양끝에서 가운데로 이동하는 투 포인터
         int leftPointer = 0;
         int rightPointer = N-1;
 
