@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/브루트포스" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/그래프탐색" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/정렬" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/이분탐색" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
