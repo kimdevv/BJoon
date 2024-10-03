@@ -17,7 +17,7 @@ public class EatOrEaten_7795 {
             int ALength = stoi(stringTokenizer.nextToken());
             int BLength = stoi(stringTokenizer.nextToken());
 
-            // A, B 수를 입력받고 정렬
+            // A, B의ㅎ 수를 입력받고 정렬
             int[] A = new int[ALength];
             stringTokenizer = new StringTokenizer(bufferedReader.readLine());
             for (int i=0; i<ALength; i++) {
