@@ -27,7 +27,7 @@ public class BlackFriday_18114 {
         } else { // 1개로 물건을 채울 수 없다면 2개, 3개로 채워야 함
             int count = 0;
 
-            // 투 포인터를 사용해서 2개로 채울 수 있는지 확인
+            // 투포인터를 사용해서 2개로 채울 수 있는지 확인
             int left = 0;
             int right = N-1;
             while (left < right) {
