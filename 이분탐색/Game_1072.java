@@ -11,7 +11,7 @@ public class Game_1072 {
     
     StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
     double X = (double)stol(stringTokenizer.nextToken()); // 게임 횟수
-    long Y = stol(stringTokenizer.nextToken()); // 이긴 게임
+    long Y = stol(stringTokenizer.nextToken()); // 이긴 게임 수
     long nowRate = (long)(Y*100 / X); // 현재 승률
     long findValue = nowRate + 1; // 찾아야 하는 값
     
