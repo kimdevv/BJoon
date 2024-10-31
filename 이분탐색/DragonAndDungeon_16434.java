@@ -27,7 +27,7 @@ public class DragonAndDungeon_16434 {
         long left = 0;
         long right = Long.MAX_VALUE;
         while (left <= right) {
-            long mid = (left + right) / 2; // maxHP가 이 값이면 클리어가 가능한가?
+            long mid = (left + right) / 2; // maxHP가 이 값이면 클리어 가능한가?
 
             if (canClearDungeon(mid, attack)) {
                 right = mid - 1;
