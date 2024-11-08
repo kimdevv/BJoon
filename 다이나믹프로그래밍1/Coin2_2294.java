@@ -4,7 +4,7 @@ import java.util.*;
 public class Coin2_2294 {
     static int n; // 동전의 종류
     static int k; // 원하는 가치의 합
-    static int[] dpArray;
+    static int[] dpArray; // dp 배열
     static ArrayList<Integer> coinArray = new ArrayList<>();
 
     static BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
