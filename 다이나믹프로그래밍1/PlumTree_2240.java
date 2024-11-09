@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class PlumTree_2240 {
-    private static int T; // 자두가 떨어지는 시간
-    private static int W; // 사람이 최대로 움직일 수 있는 거리
+    private static int T; // 자두가 떨어지는 시간.
+    private static int W; // 사람이 최대로 움직일 수 있는 거리.
 
     private static ArrayList<Integer> plumArray = new ArrayList<>();
     private static int[] dpArray;
