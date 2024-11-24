@@ -26,7 +26,7 @@ public class InputtingBox_1965 {
     private static void processDP() {
         for (int i = 0; i < n; i++) {
             int number = boxSize.get(i);
-            dp[number] = Arrays.stream(Arrays.copyOfRange(dp, 0, number))
+            dp[number] = Arrays.stream(Arrays.copyOfRange(dp, 0, number)) // 현재 이전의 최댓값을 구함
                     .max().getAsInt() + 1;
         }
     }
