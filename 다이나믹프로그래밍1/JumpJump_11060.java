@@ -14,7 +14,7 @@ public class JumpJump_11060 {
             System.out.println(0);
         } else {
             initializeMaze(); // 미로 초기화
-            processDP(); // DP 작업g
+            processDP(); // DP 작업
             printResult(); // 결과 출력
         }
     }
