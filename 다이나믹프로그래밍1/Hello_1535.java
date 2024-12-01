@@ -12,7 +12,7 @@ public class Hello_1535 {
   public static void main(String[] args) throws IOException {
     inputN(); // 사람의 수 N을 입력받는다.
     inputLoseGet(); // N 만큼 잃는 체력, 얻는 행복을 입력받는다.
-    processDP(); // DP 작업ㅎ
+    processDP(); // DP 작업
     System.out.println(dp[N][HP-1]);
   }
   
