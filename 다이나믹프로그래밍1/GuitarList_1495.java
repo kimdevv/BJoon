@@ -44,20 +44,35 @@ public class GuitarList_1495 {
         validateDP(2);
 
         for (int i=3; i<=N; i++) {
-            if (dp[i-1] + changeVolume[i] > dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i]]) {
-                if (dp[i-1] + changeVolume[i] > M) {
-                    if (dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i]] > M) {
+            if (dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i] > dp[i-1]+changeVolume[i] && dp[i-3]-changeVolume[i-2] > 0) {
+                if (checkOverMax(dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i])) {
+                    if (checkOverMax(dp[i-1]+changeVolume[i])) {
                         dp[i] = dp[i-1] - changeVolume[i];
                     } else {
-                        dp[i] = dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i]];
+                        dp[i] = dp[i-1] + changeVolume[i];
                     }
                 } else {
-
+                    dp[i] = dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i];
+                }
+            } else {
+                if (checkOverMax(dp[i-1]+changeVolume[i])) {
+                    if (checkOverMax(dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i])) {
+                        dp[i] = dp[i-1] - changeVolume[i];
+                    } else {
+                        dp[i] = dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i];
+                    }
+                } else {
+                    dp[i] = dp[i-1] + changeVolume[i];
                 }
             }
-            dp[i] = Math.max(dp[i-1]+changeVolume[i], dp[i-3]-changeVolume[i-2]+changeVolume[i-1]+changeVolume[i]);
-            validateDP(i);
         }
+    }
+
+    private static boolean checkOverMax(int number) {
+        if (number > M) {
+            return true;
+        }
+        return false;
     }
 
     private static void validateDP(int index) {
