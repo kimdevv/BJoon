@@ -42,6 +42,10 @@ public class MakeTo12_12852 {
     }
 
     private static int outputProgress(int index) {
+        // 사실 이 부분은 굳이 이렇게 반복문을 한 번 더 돌리지 않아도
+        // 경로 배열을 하나 더 만들어서 dp작업 진행할 때
+        // 자신까지의 경로를 함께 저장해오면 굳이 이렇게 안 해도 됨 
+        
         if (index == 0) {
             return -1;
         }
