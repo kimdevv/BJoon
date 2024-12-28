@@ -26,7 +26,6 @@ public class LocatingSoldiers_18353 {
   private static void processDP() {
     dp = new int[N];
     dp[0] = 1;
-    
     for (int i=1; i<soldiers.length; i++) {
       dp[i] = findMax(i) + 1;
     }
