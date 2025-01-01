@@ -59,31 +59,24 @@ public class Cram_14728 {
     private static void processDP() {
         dp = new int[10_000 + 1];
 
-        int previousIndex = 0;
+        Study theStudy = new Study(0, 0);
         for (int i=1; i<dp.length; i++) {
             if (studies.isEmpty()) {
-                dp[i] = dp[previousIndex] + dp[i - previousIndex];
+                dp[i] = dp[theStudy.time] + dp[i - theStudy.time];
                 continue;
             }
 
-            if (i == studies.peek().time) {
-                dp[i] = Math.max(dp[previousIndex] + dp[i - previousIndex-1], studies.poll().score);
-                previousIndex = i;
-            } else {
-                dp[i] = dp[previousIndex] + dp[i - previousIndex];
+            if (i >= studies.peek().time) {
+                theStudy = studies.poll();
+                dp[i] = theStudy.score + dp[i - theStudy.time];
+                continue;
             }
+            dp[i] = dp[theStudy.time] + dp[i - theStudy.time];
         }
     }
 
     private static void outputResult() {
         System.out.println(dp[T]);
-        //System.out.println(Arrays.toString(dp));
+        System.out.println(Arrays.toString(dp));
     }
 }
-
-/*
-    3 3
-    1 1
-    1 5
-    1 9
- */
