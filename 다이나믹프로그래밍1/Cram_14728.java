@@ -24,7 +24,7 @@ public class Cram_14728 {
     private static int T; // 시험까지 공부할 수 있는 총 시간
 
     private static PriorityQueue<Study> studies;
-    private static int[] dp;
+    private static int[][] dp;
 
     private static BufferedReader bufferedReader;
 
@@ -57,26 +57,21 @@ public class Cram_14728 {
     }
 
     private static void processDP() {
-        dp = new int[10_000 + 1];
-
-        Study theStudy = new Study(0, 0);
-        for (int i=1; i<dp.length; i++) {
-            if (studies.isEmpty()) {
-                dp[i] = dp[theStudy.time] + dp[i - theStudy.time];
-                continue;
+        dp = new int[N+1][10_000 + 1];
+        for(int i=0; i<N; i++) {
+          Study theStudy = studies.poll();
+          for (int j=1; j<=T; j++) {
+            if (j >= theStudy.time) {
+                dp[i+1][j] = Math.max(dp[i][j], theStudy.score + dp[i][j - theStudy.time]);
+            } else {
+                dp[i+1][j] = dp[i][j];
             }
-
-            if (i >= studies.peek().time) {
-                theStudy = studies.poll();
-                dp[i] = theStudy.score + dp[i - theStudy.time];
-                continue;
-            }
-            dp[i] = dp[theStudy.time] + dp[i - theStudy.time];
+          }
         }
     }
 
     private static void outputResult() {
-        System.out.println(dp[T]);
-        System.out.println(Arrays.toString(dp));
+        System.out.println(dp[N][T]);
+        //System.out.println(Arrays.toString(dp[2]));
     }
 }
