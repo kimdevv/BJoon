@@ -51,6 +51,6 @@ public class SumOfTwoAttorney_2410 {
   
   private static void outputResult() {
     System.out.println(dp[N] % 1_000_000_000);
-    System.out.println(Arrays.toString(dp));
+    //System.out.println(Arrays.toString(dp));
   }
 }
