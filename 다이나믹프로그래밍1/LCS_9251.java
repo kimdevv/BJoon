@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class LCS_9251 {
   private static String string1;
