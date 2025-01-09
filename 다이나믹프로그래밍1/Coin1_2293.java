@@ -2,56 +2,56 @@ import java.io.*;
 import java.util.*;
 
 public class Coin1_2293 {
-    private static int n; // 동전 종류의 개수
-    private static int k; // 동전의 합
-
-    private static int[] coins; // 동전의 종류 배열
-    private static int[] dp;
-
-    private static BufferedReader bufferedReader;
-
-    public static void main(String[] args) throws IOException {
-        initializeBufferedReader();
-        inputCoins();
-        processDP();
-        outputResult();
+  private static int N; // 동전의 개수
+  private static int K; // 목표 금액
+  private static BufferedReader bufferedReader;
+  
+  private static int[] coins;
+  private static int[][] dp;
+  
+  public static void main(String[] args) throws IOException {
+    initializeBufferedReader();
+    inputNK();
+    inputCoins();
+    processDP();
+    outputResult();
+  }
+  
+  private static void initializeBufferedReader() {
+    bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+  }
+  
+  private static void inputNK() throws IOException {
+    StringTokenizer NK = new StringTokenizer(bufferedReader.readLine());
+    N = Integer.parseInt(NK.nextToken());
+    K = Integer.parseInt(NK.nextToken());
+  }
+  
+  private static void inputCoins() throws IOException {
+    coins = new int[N];
+    for (int i=0; i<N; i++) {
+      int coin = Integer.parseInt(bufferedReader.readLine());
+      coins[i] = coin;
     }
-
-    private static void initializeBufferedReader() {
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    }
-
-    private static void inputCoins() throws IOException {
-        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        n = Integer.parseInt(stringTokenizer.nextToken());
-        k = Integer.parseInt(stringTokenizer.nextToken());
-
-        coins = new int[n];
-        for (int i=0; i<n; i++) {
-            coins[i] = Integer.parseInt(bufferedReader.readLine());
+  }
+  
+  private static void processDP() {
+    dp = new int[N + 1][K + 1];
+    for (int i=1; i<dp.length; i++) {
+      int coin = coins[i-1];
+      for (int j=1; j<dp[i].length; j++) {
+        if (j % coin == 0) {
+          int plus = dp[i][j-coin] == 0 ? 1 : dp[i][j-coin];
+          dp[i][j] = dp[i-1][j] + plus;
+        } else {
+          int index = j - coin < 0 ? 0 : j - coin;
+          dp[i][j] = dp[i-1][j] + dp[i][index];
         }
-        Arrays.sort(coins);
+      }
     }
-
-    private static void processDP() {
-        dp = new int[10_000 + 1];
-
-        for (int coin : coins) {
-            dp[coin] = 1;
-        }
-
-        int minimum = coins[0];
-        for (int i=minimum; i<dp.length; i++) {
-            for (int coin : coins) {
-                if (i-coin > 0 && dp[i-coin] > 0 && dp[i] != 1) {
-                    dp[i] += dp[i-coin];
-                }
-            }
-        }
-    }
-
-    private static void outputResult() {
-        System.out.println(dp[k]);
-        System.out.println(Arrays.toString(dp));
-    }
+  }
+  
+  private static void outputResult() {
+    System.out.println(dp[N][K]);
+  }
 }
