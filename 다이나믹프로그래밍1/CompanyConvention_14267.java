@@ -24,7 +24,6 @@ public class CompanyConvention_14267 {
         inputNM();
         inputBosses();
         inputCompliments();
-        processDP();
         outputResult();
     }
 
@@ -55,26 +54,18 @@ public class CompanyConvention_14267 {
     }
 
     private static void inputCompliments() throws IOException {
+        dp = new int[N+1];
         for (int i=0; i<M; i++) {
             StringTokenizer workerAndCompliment = new StringTokenizer(bufferedReader.readLine());
             int worker = Integer.parseInt(workerAndCompliment.nextToken());
             int compliment = Integer.parseInt(workerAndCompliment.nextToken());
-            workers.get(worker).compliment += compliment;
-        }
-    }
-
-    private static void processDP() {
-        dp = new int[N+1];
-        for(int i=1; i<=N; i++) {
-            Worker worker = workers.get(i);
-            dp[i] += worker.compliment;
-            increaseSubordinatesCompliments(worker.subordinates, worker.compliment);
+            dp[worker] += compliment;
+            increaseSubordinatesCompliments(workers.get(worker).subordinates, compliment);
         }
     }
 
     private static void increaseSubordinatesCompliments(List<Integer> subordinates, int increaseCompliments) {
         for (int index : subordinates) {
-            //System.out.println(increaseCompliments + " " + index);
             dp[index]+= increaseCompliments;
             Worker worker = workers.get(index);
             increaseSubordinatesCompliments(worker.subordinates, increaseCompliments);
@@ -82,8 +73,10 @@ public class CompanyConvention_14267 {
     }
 
     private static void outputResult() {
+        StringBuilder result = new StringBuilder();
         for (int i=1; i<dp.length; i++) {
-            System.out.print(dp[i] + " ");
+            result.append(dp[i] + " ");
         }
+        System.out.println(result);
     }
 }
