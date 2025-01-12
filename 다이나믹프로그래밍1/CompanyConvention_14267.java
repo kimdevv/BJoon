@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CompanyConvention_14267 {
     private static int N; // 회사의 직원 수
-    private static int M; // 최초의 칭찬 횟수
+    private static int M; // 최초 칭찬 횟수
     private static BufferedReader bufferedReader;
 
     private static List<Worker> workers;
