@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CompanyConvention_14267 {
     private static int N; // 회사의 직원 수
-    private static int M; // 최초 칭찬 횟수
+    private static int M; // 최초의 칭찬 횟수
     private static BufferedReader bufferedReader;
 
     private static List<Worker> workers;
@@ -11,11 +11,9 @@ public class CompanyConvention_14267 {
 
     private static class Worker {
         public List<Integer> subordinates;
-        public int compliment;
 
         public Worker() {
             this.subordinates = new ArrayList<>();
-            this.compliment = 0;
         }
     }
 
@@ -24,6 +22,7 @@ public class CompanyConvention_14267 {
         inputNM();
         inputBosses();
         inputCompliments();
+        processDP(1);
         outputResult();
     }
 
@@ -60,7 +59,14 @@ public class CompanyConvention_14267 {
             int worker = Integer.parseInt(workerAndCompliment.nextToken());
             int compliment = Integer.parseInt(workerAndCompliment.nextToken());
             dp[worker] += compliment;
-            increaseSubordinatesCompliments(workers.get(worker).subordinates, compliment);
+        }
+    }
+
+    private static void processDP(int index) {
+        Worker worker = workers.get(index);
+        for (int subordinate : worker.subordinates) {
+            dp[subordinate] += dp[index];
+            processDP(subordinate);
         }
     }
 
