@@ -43,7 +43,7 @@ public class CompanyConvention_14267 {
 
     private static void inputBosses() throws IOException {
         StringTokenizer bosses = new StringTokenizer(bufferedReader.readLine());
-        for (int i=1; i<N+1; i++) {
+        for (int i=1; i<=N; i++) {
             int boss = Integer.parseInt(bosses.nextToken());
             if (boss == -1) {
                 continue;
