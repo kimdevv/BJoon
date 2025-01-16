@@ -33,13 +33,6 @@ public class ChangingCoin_2624 {
       coins[i][0] = Integer.parseInt(rawCoin.nextToken()); // 동전의 금액
       coins[i][1] = Integer.parseInt(rawCoin.nextToken()); // 동전의 개수
     }
-    
-    Arrays.sort(coins, new Comparator<int[]>() {
-      @Override
-      public int compare(int[] coin1, int[] coin2) {
-        return coin1[0] - coin2[0]; // 동전의 금액으로 오름차순 정렬
-      }
-    });
   }
   
   private static void processDP() {
