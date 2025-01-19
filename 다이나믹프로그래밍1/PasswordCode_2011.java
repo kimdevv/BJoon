@@ -36,7 +36,7 @@ public class PasswordCode_2011 {
           dp[i] = dp[i-2 < 0 ? 0 : i-2];
         }
       } else { // 0이 아니라면
-        if (checkTwoDigitUnder26(i)) { // 앞의 코드와 함께 10~26 사이의 수인지 확인
+        if (checkTwoDigitUnder26(i)) { // 앞의 코드 문자와 함께 10~26 사이의 수인지 확인
           dp[i] = (dp[i-1] + dp[i-2 < 0 ? 0 : i-2]) % 1000000;
         } else {
           dp[i] = dp[i-1] % 1000000;
