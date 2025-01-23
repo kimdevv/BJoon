@@ -3,17 +3,9 @@ import java.util.*;
 
 public class Friend_1058 {
   private static int N; // 사람의 수
-  private static List<Person> personList;
   private static BufferedReader bufferedReader;
-  private static int[] friends;
-  
-  private static class Person {
-    private char[] friendList;
-    
-    private Person(String rawFriendList) {
-      friendList = rawFriendList.toCharArray();
-    }
-  }
+  private static char[][] friends; // 친구 리스트
+  private static boolean[][] twoFriends; // 2-친구 수
   
   public static void main(String[] args) throws IOException {
     initializeBufferedReader();
@@ -32,35 +24,21 @@ public class Friend_1058 {
   }
   
   private static void inputPerson() throws IOException {
-    personList = new ArrayList<>();
+    friends = new char[N][N];
     for (int i=0; i<N; i++) {
       String rawFriendList = bufferedReader.readLine();
-      personList.add(new Person(rawFriendList));
+      friends[i] = rawFriendList.toCharArray();
     }
   }
   
   private static void process2Friend() {
-    friends = new int[N];
-    for (int i=0; i<N; i++) {
-      Person nowPerson = personList.get(i);
-      a: for (int j=0; j<N; j++) {
-        if (i==j) {
-          continue;
-        }
-        for (int k=0; k<N; k++) {
-          if (i==k) {
-            continue;
-          }
-          if (nowPerson.friendList[k] == 'Y') {
-            if (j==k) {
-              friends[i]++;
-              continue a;
-            } else {
-              if (personList.get(k).friendList[j] == 'Y') {
-                friends[i]++;
-                continue a;
-              }
-            }
+    twoFriends = new boolean[N][N];
+    for (int i=0; i<N; i++) { // 시작
+      for (int j=0; j<N; j++) { // 끝
+        for (int k=0; k<N; k++) { // 거쳐가기
+          if (friends[i][j] == 'Y' || (friends[i][k] == 'Y' && friends[k][j] == 'Y')) {
+            twoFriends[i][j] = true;
+            break;
           }
         }
       }
@@ -68,6 +46,16 @@ public class Friend_1058 {
   }
   
   private static void outputResult() {
-    System.out.println(Arrays.stream(friends).max().getAsInt());
+    int max = Integer.MIN_VALUE;
+    for (int i=0; i<N; i++) {
+      int temp = 0;
+      for (int k=0; k<N; k++) {
+        if (twoFriends[i][k]) {
+          temp++;
+        }
+      }
+      max = Math.max(max, temp);
+    }
+    System.out.println(max == 0 ? max : max-1);
   }
 }
