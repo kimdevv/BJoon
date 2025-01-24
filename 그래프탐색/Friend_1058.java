@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Friend_1058 {
   private static int N; // 사람의 수
-  private static BufferedReader bufferedReader;
   private static char[][] friends; // 친구 리스트
   private static boolean[][] twoFriends; // 2-친구 수
+    private static BufferedReader bufferedReader;
   
   public static void main(String[] args) throws IOException {
     initializeBufferedReader();
