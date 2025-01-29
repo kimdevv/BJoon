@@ -4,7 +4,7 @@ import java.util.*;
 public class Capsule_4811 {
   private static long[] dp;
   
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     processDP();
     inputTestCases();
   }
