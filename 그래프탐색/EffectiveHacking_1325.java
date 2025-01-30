@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class EffectiveHacking_1325 {
     private static int N; // 컴퓨터 개수
     private static int M; // 신뢰하는 관계의 개수
-    private static List<ArrayList<Integer>> trustRelationships;
+    private static List<ArrayList<Integer>> trustRelationships; // 신뢰 관계 리스트
     private static int[] availableHackingCount;
     private static boolean[] visited;
     private static BufferedReader bufferedReader;
