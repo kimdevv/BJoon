@@ -1,6 +1,8 @@
 import java.awt.Point;
 import java.io.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 public class WarBattle_1303 {
   private static BufferedReader bufferedReader;
