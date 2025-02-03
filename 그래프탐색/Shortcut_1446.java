@@ -67,7 +67,9 @@ public class Shortcut_1446 {
         for (int i=0; i<N; i++) {
             Shortcut nowShortcut = shortcuts.get(i);
             dp[nowShortcut.end] = Math.min(dp[nowShortcut.end], dp[nowShortcut.start] + nowShortcut.length);
-            // 전 꺼에서 end 저거를 갱신했는데, 그 이후로 +1을 안 해줘서 그냥 i랑 비교해서 제대로 안 되는 듯 ?
+            for (int j=nowShortcut.end+1; j<=10_000; j++) {
+                dp[j] = Math.min(dp[j], dp[j-1]+1);
+            }
         }
 
         for (int i=1; i<=10_000; i++) {
@@ -77,6 +79,6 @@ public class Shortcut_1446 {
 
     private static void outputResult() {
         System.out.println(dp[D]);
-        System.out.println(Arrays.toString(dp));
+        //System.out.println(Arrays.toString(dp));
     }
 }
