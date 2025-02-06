@@ -51,7 +51,7 @@ public class DistanceBetweenNodes_1240 {
   
   private static void traverse(int start, int end) {
     Arrays.fill(distances[start], Integer.MAX_VALUE);
-    Queue<Node> queue = new LinkedList<>();
+    Queue<Node> queue = new ArrayDeque<>();
     queue.add(new Node(start, 0));
     distances[start][start] = 0;
     while (!queue.isEmpty()) {
