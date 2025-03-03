@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Lie_1043 {
     private static BufferedReader bufferedReader;
     private static int N; // 도시의 개수
-    private static int M; // 버스의 개수
+    private static int M; // 버스의 수
     private static List<Bus>[] buses;
 
     public static void main(String[] args) throws IOException {
