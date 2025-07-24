@@ -25,12 +25,11 @@ public class QuadTree_1992 {
             for (int j=0; j<length; j++) {
                 if (array[startY + i][startX + j] != color) {
                     int halfLength = length / 2;
-                    String sb = "(" + divideAndConquer(startX, startY, halfLength)
+                    return "(" + divideAndConquer(startX, startY, halfLength)
                         + divideAndConquer(startX + halfLength, startY, halfLength)
                         + divideAndConquer(startX, startY + halfLength, halfLength)
                         + divideAndConquer(startX + halfLength, startY + halfLength, halfLength)
                         + ")";
-                    return sb;
                 }
             }
         }
