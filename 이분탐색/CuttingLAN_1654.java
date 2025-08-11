@@ -25,15 +25,12 @@ public class CuttingLAN_1654 {
     }
 
     private static long findTreshold(long limit) {
-        long left = 0;
+        long left = 1;
         long right = (long)Integer.MAX_VALUE * K;
 
-        long maxLength = Long.MIN_VALUE;
+        long maxLength = 1;
         while (left <= right) {
             long mid = (left + right) / 2;
-            if (mid == 0) {
-                return 1;
-            }
 
             long cableCount = calculateCount(mid);
             if (cableCount < N || limit < mid) {
