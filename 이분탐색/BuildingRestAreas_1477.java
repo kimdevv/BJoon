@@ -13,21 +13,18 @@ public class BuildingRestAreas_1477 {
         // 고속도로의 길이
         int l = Integer.parseInt(st.nextToken());
 
-        if (n == 0) {
-            System.out.println(l % (m +1) == 0 ? l / (m +1) : l / (m +1) + 1);
-            return;
-        }
-
-        int[] rests = new int[n + 2];
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i=0; i< n; i++) {
-            rests[i] = Integer.parseInt(st.nextToken());
+        int[] rests = new int[n + 2]; // N개 + 0 + 끝
+        if (n != 0) {
+            st = new StringTokenizer(br.readLine(), " ");
+            for (int i=0; i< n; i++) {
+                rests[i] = Integer.parseInt(st.nextToken());
+            }
         }
         rests[n] = l;
         Arrays.sort(rests);
 
-        int left = rests[0];
-        int right = rests[n +1];
+        int left = rests[0]; // 도로의 가장 처음으로 초기화
+        int right = rests[n +1]; // 도로의 가장 끝으로 초기화
         int result = 0;
         while (left <= right) {
             int mid = (left + right) / 2;
@@ -41,7 +38,7 @@ public class BuildingRestAreas_1477 {
             }
             if (count > m) {
                 left = mid + 1;
-            } else {
+            } else { // M개 이하로 휴게소를 세울 수 있으면 나머지 개수는 아무데나 세우면 된다
                 result = mid;
                 right = mid - 1;
             }
