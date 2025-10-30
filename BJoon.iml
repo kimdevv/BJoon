@@ -18,6 +18,8 @@
       <sourceFolder url="file://$MODULE_DIR$/이분탐색" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/분할정복" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/슬라이딩윈도우" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/다익스트라" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/투포인터" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
