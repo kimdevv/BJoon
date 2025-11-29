@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 @SuppressWarnings("unchecked")
-public class Main {
+public class FindingPath_11403 {
   
   private static int N;
   
