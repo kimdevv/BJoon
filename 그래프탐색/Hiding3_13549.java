@@ -6,35 +6,32 @@ public class Hiding3_13549 {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
-    StringTokenizer st = new StringTokenizer(br.readLine());
+    StringTokenizer st = new StringTokenizer(br.readLine(), " ");
     int N = Integer.parseInt(st.nextToken()); // 수빈이의 위치
     int K = Integer.parseInt(st.nextToken()); // 동생의 위치
     
-    int[] costs = new int[200_002];
-    Arrays.fill(costs, Integer.MAX_VALUE);
-    
-    PriorityQueue<Route> queue = new PriorityQueue<>((r1, r2) -> r1.cost - r2.cost);
-    queue.offer(new Route(N, 0));
-    while (!queue.isEmpty()) {
-      Route current = queue.poll();
-      costs[current.location] = current.cost;
-      
+    int[] cost = new int[100_001];
+    Arrays.fill(cost, Integer.MAX_VALUE);
+    Deque<Route> deque = new ArrayDeque<>();
+    deque.offerFirst(new Route(N, 0));
+    while (!deque.isEmpty()) {
+      Route current = deque.pollFirst();
+      cost[current.location] = current.cost;
       if (current.location == K) {
         System.out.println(current.cost);
         break;
       }
       
-      if (current.location - 1 >= 0 && current.cost + 1 < costs[current.location - 1]) {
-        queue.offer(new Route(current.location - 1, current.cost + 1));
+      if (current.location - 1 >= 0 && current.cost + 1 < cost[current.location - 1]) {
+        deque.offerLast(new Route(current.location - 1, current.cost + 1));
       }
-      if (current.location + 1 <= 200_000 && current.cost + 1 < costs[current.location + 1]) {
-        queue.offer(new Route(current.location + 1, current.cost + 1));
+      if (current.location + 1 <= 100_000 && current.cost + 1 < cost[current.location + 1]) {
+        deque.offerLast(new Route(current.location + 1, current.cost + 1));
       }
-      if (current.location * 2 <= 200_000 && current.cost < costs[current.location * 2]) {
-        queue.offer(new Route(current.location * 2, current.cost));
+      if (current.location * 2 <= 100_000 && current.cost < cost[current.location * 2]) {
+        deque.offerFirst(new Route(current.location * 2, current.cost));
       }
     }
-    
     br.close();
   }
   
