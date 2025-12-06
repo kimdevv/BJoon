@@ -5,42 +5,34 @@ import java.util.StringTokenizer;
 
 public class LongestIncreasingSequence_11053 {
 
-    static int[] dp;
-    static int[] A;
-
-    public static int stoi(String str) {
-        return Integer.parseInt(str);
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = stoi(br.readLine());
-        A = new int[N+1]; // 수열 A
+        int N = Integer.parseInt(br.readLine()); // 수열의 크기
 
+        int[] array = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        for (int i=1; i<=N; i++) {
-            A[i] = stoi(st.nextToken());
+        for (int i = 0; i < N; i++) {
+            array[i] = Integer.parseInt(st.nextToken());
         }
 
-        dp = new int[N+1];
-        dp[1] = 1;
-
-        int min = A[1];
-        for (int i=2; i<=N; i++) {
-            dp[i] = 1;
-            for (int j=1; j<i; j++) {
-                if (A[i] > A[j] && dp[i] <= dp[j]) {
-                    dp[i] = dp[j]+1;
+        int[] dp = new int[N];
+        dp[0] = 1;
+        for (int i = 1; i < N; i++) {
+            int max = 0;
+            for (int j = 0; j < i; j++) {
+                if (array[j] < array[i]) {
+                    max = Math.max(max, dp[j]);
                 }
             }
+            dp[i] = max + 1;
         }
 
-        int ret = 0;
-        for (int i : dp) {
-            ret = Math.max(ret, i);
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < N; i++) {
+            max = Math.max(max, dp[i]);
         }
-
-        System.out.println(ret);
+        System.out.println(max);
+        br.close();
     }
 }
